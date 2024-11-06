@@ -35,13 +35,13 @@ body {
 }
 
 .card-back {
-  background-image: url('../img/card_back.png');
+  background-image: url('/public/img/card_back.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .card-front {
-  background-image: url('../img/card_spade_01.png');
+  /* background-image: url('/img/card_spade_01.png'); */
   background-size: contain;
   background-repeat: no-repeat;
   transform: rotateY(180deg);
