@@ -6,11 +6,44 @@ body {
   margin: 0;
 }
 
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.clear-container {
+  text-align: center;
+}
+
+.clear-message {
+  font-size: 48px;
+  font-weight: bold;
+  color: black;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(4, 136px);
   grid-template-rows: repeat(4, 200px);
   gap: 10px;
+}
+
+.restart-button {
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.restart-button:hover {
+  background-color: #0056b3;
 }
 
 /* .card {
@@ -42,13 +75,9 @@ body {
 }
 
 .card-front {
-  /* background-image: url('/img/card_spade_01.png'); */
   background-size: contain;
   background-repeat: no-repeat;
   transform: rotateY(180deg);
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 .card.flipped .card-inner {
