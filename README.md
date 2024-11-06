@@ -7,5 +7,5 @@
   - JavaScript
   - React
   - Node.js  
-- 引用した画像
+- 引用する画像
   - いらすとや（ <https://www.irasutoya.com/2017/05/card.html> ）
