@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+// PS ~> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+// PS ~> npm start
+
 const App = () => {
   // カードの表の画像
   const images = [
