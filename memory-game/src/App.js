@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 
-// 初回
-// ブラウザでNode.jsをインストール（npm -vでインストールされているか確認）
-// PS > npm install react-scripts --save
-
-// ブラウザの立ち上げ方（LinuxまたはmacOSの場合，一行目は不要）
-// PS > Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-// PS > npm start
-
 const App = () => 
 {
   // カードの表の画像
