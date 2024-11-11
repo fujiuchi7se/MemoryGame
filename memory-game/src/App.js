@@ -35,12 +35,20 @@ const App = () =>
   };
 
   // stateで状態を管理
+  //    gameState   : ゲームの状態．start，playing，clearedの３つ．
   //    cards       : カードの状態．初期値はsuffleCards()
   //    flippedCards: 裏返されたカードの状態．マッチングの判定に使用．初期値は空の配列．
-  //    isCleared   : ゲームの状態．クリア判定に使用．初期値はfalse．
+  const [gameState, setGameState] = useState("start");
   const [cards, setCards] = useState(shuffleCards());
   const [flippedCards, setFlippedCards] = useState([]);
-  const [isCleared, setIsCleared] = useState(false);
+
+  // ゲーム開始時の初期化
+  const startGame = () => 
+  {
+    setGameState("playing");
+    setCards(shuffleCards());
+    setFlippedCards([]);
+  };
 
   // カードをクリックしたときの処理
   const clickCard = (index) => 
@@ -48,8 +56,8 @@ const App = () =>
     // カードがクリック不可能な時に処理を中断する
     // １．そのカードが既に裏返されている
     // ２．全体で合計２枚のカードが裏返されている
-    // ３．ゲームが終了している
-    if (cards[index].isFlipped || flippedCards.length === 2 || isCleared) return;
+    // ３．ゲーム中である
+    if (cards[index].isFlipped || flippedCards.length === 2 || gameState !== "playing") return;
 
     // cardsの変数を操作するために，コピーを生成
     // カードがクリックされたのでisFlippedをtrueにする
@@ -82,7 +90,7 @@ const App = () =>
           setFlippedCards([]);
 
           // 全てのカードのisMatchedがtrueであれば，ゲームクリア
-          if (newCards.every(card => card.isMatched)) setIsCleared(true);
+          if (newCards.every(card => card.isMatched)) setGameState("cleared");
         }, 500);
       } else 
       {
@@ -104,41 +112,57 @@ const App = () =>
   // すべての状態を初期化
   const restartGame = () => 
   {
+    setGameState("playing");
     setCards(shuffleCards());
     setFlippedCards([]);
-    setIsCleared(false);
   };
 
   // ブラウザに表示される部分
   // ゲームクリア時とゲーム中の表示
   return (
     <div className="game-container">
-      {isCleared ? (
-        <div className="clear-container">
-          <div className="clear-message">CLEAR!!</div>
-          <button onClick={restartGame} className="restart-button">Play again</button>
-        </div>
-      ) : 
-      (
-        <div className="card-grid">
-          {cards.map((card, index) => 
-          (
-            <div
-              key={index}
-              className={`card ${card.isFlipped ? 'flipped' : ''}`}
-              onClick={() => clickCard(index)}
-              style={{ visibility: card.isMatched ? 'hidden' : 'visible' }}
-            >
-              <div className="card-inner">
-                <div className="card-front" style={{ backgroundImage: `url(../img/${card.image})`}}></div>
-                <div className="card-back"></div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+      {
+        gameState === "start" && 
+        (
+          <div className="start-container">
+            <button onClick={startGame} className="start-button">Start Game</button>
+          </div>
+        )
+      }
+      {
+        gameState === "playing" && 
+        (
+          <div className="card-grid">
+            {
+              cards.map((card, index) => 
+              (
+                <div
+                  key={index}
+                  className={`card ${card.isFlipped ? 'flipped' : ''}`}
+                  onClick={() => clickCard(index)}
+                  style={{ visibility: card.isMatched ? 'hidden' : 'visible' }}
+                >
+                  <div className="card-inner">
+                    <div className="card-front" style={{ backgroundImage: `url(../img/${card.image})`}}></div>
+                    <div className="card-back"></div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        )
+      }
+      {
+        gameState === "cleared" && 
+        (
+          <div className="clear-container">
+            <div className="clear-message">CLEAR!!</div>
+            <button onClick={restartGame} className="restart-button">Play again</button>
+          </div>
+        )
+      }
     </div>
   );
-}
+};
 
 export default App;
