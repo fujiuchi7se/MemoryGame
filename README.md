@@ -18,7 +18,7 @@
 npm install react-scripts
 ```
  
-3. package.jsonに以下を手動で追加．  
+3. package.jsonに以下を手動で追加  
 ```json
 "scripts": {
   "start": "react-scripts start"
