@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
+// https://illust8.com/contents/1335
+
 const App = () => 
 {
   // カードの表の画像
@@ -112,49 +114,45 @@ const App = () =>
   // ブラウザに表示される部分
   // ゲームクリア時とゲーム中の表示
   return (
-    <div className="game-container">
-      {
-        gameState === "start" && 
-        (
+    <div>
+      <header className="game-header">
+        Memory Game
+      </header>
+      <div className="game-container">
+        {gameState === "start" && (
           <div className="start-container">
-            <button onClick={startGame} className="start-button">Start Game</button>
+            <img src="../img/cards.png" alt="Game Logo" class="image" />
+            <button onClick={startGame} className="start-button">Start game</button>
           </div>
-        )
-      }
-      {
-        gameState === "playing" && 
-        (
+        )}
+  
+        {gameState === "playing" && (
           <div className="card-grid">
-            {
-              cards.map((card, index) => 
-              (
-                <div
-                  key={index}
-                  className={`card ${card.isFlipped ? 'flipped' : ''}`}
-                  onClick={() => clickCard(index)}
-                  style={{ visibility: card.isMatched ? 'hidden' : 'visible' }}
-                >
-                  <div className="card-inner">
-                    <div className="card-front" style={{ backgroundImage: `url(../img/${card.image})`}}></div>
-                    <div className="card-back"></div>
-                  </div>
+            {cards.map((card, index) => (
+              <div
+                key={index}
+                className={`card ${card.isFlipped ? 'flipped' : ''}`}
+                onClick={() => clickCard(index)}
+                style={{ visibility: card.isMatched ? 'hidden' : 'visible' }}
+              >
+                <div className="card-inner">
+                  <div className="card-front" style={{ backgroundImage: `url(../img/${card.image})` }}></div>
+                  <div className="card-back"></div>
                 </div>
-              ))
-            }
+              </div>
+            ))}
           </div>
-        )
-      }
-      {
-        gameState === "cleared" && 
-        (
+        )}
+  
+        {gameState === "cleared" && (
           <div className="clear-container">
-            <div className="clear-message">CLEAR!!</div>
+            <img src="../img/clear.png" alt="Game Logo" class="image" />
             <button onClick={restartGame} className="restart-button">Play again</button>
           </div>
-        )
-      }
+        )}
+      </div>
     </div>
-  );
+  );  
 };
 
 export default App;
