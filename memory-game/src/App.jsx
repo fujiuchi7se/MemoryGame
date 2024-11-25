@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 
-// https://illust8.com/contents/1335
-
 const App = () => 
 {
   // カードの表の画像
@@ -115,13 +113,11 @@ const App = () =>
   // ゲームクリア時とゲーム中の表示
   return (
     <div>
-      <header className="game-header">
-        Memory Game
-      </header>
+      <header className="game-header">Memory Game</header>
       <div className="game-container">
         {gameState === "start" && (
           <div className="start-container">
-            <img src="../img/cards.png" alt="Game Logo" class="image" />
+            <img src="../img/cards.png" class="image" />
             <button onClick={startGame} className="start-button">Start game</button>
           </div>
         )}
@@ -146,7 +142,7 @@ const App = () =>
   
         {gameState === "cleared" && (
           <div className="clear-container">
-            <img src="../img/clear.png" alt="Game Logo" class="image" />
+            <img src="../img/clear.png" class="image" />
             <button onClick={restartGame} className="restart-button">Play again</button>
           </div>
         )}
