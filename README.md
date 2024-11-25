@@ -8,9 +8,10 @@
   - React
   - Node.js  
 - 引用
-  - いらすとや（ <https://www.irasutoya.com/2017/05/card.html> ）
+  - いらすとや（ <https://www.irasutoya.com/> ）
+  - イラストエイト（ <https://illust8.com/> ）
 
-## 初回起動時のセットアップ
+## ~~初回起動時のセットアップ~~
 1. ブラウザで[Node.js](https://nodejs.org/en/)をインストール（`npm -v`でインストールされているか確認）
  
 2. react-scriptsをインストール
@@ -25,7 +26,7 @@ npm install react-scripts
 }
 ```
 
-## ブラウザの立ち上げ方（LinuxまたはmacOSの場合，１は不要）
+## ~~ブラウザの立ち上げ方（LinuxまたはmacOSの場合，１は不要）~~
 1. Powershellの実行ポリシーをRemoteSignedに変更
 ```shell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
