@@ -13,6 +13,11 @@
   - イラストエイト（ <https://illust8.com/> ）
 
 ## ブラウザの立ち上げ方
+1. viteをインストールする
+```
+npm install vite
+```
+2. 実行して出てきたリンクを開く
 ```shell
 npm run dev
 ```
